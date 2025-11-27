@@ -1,0 +1,45 @@
+{
+  "common": {
+    "confirm": "确认",
+    "cancel": "取消",
+    "close": "关闭",
+    "chat": "聊天",
+    "settings": "设置",
+    "logout": "退出",
+    "profile": "个人资料",
+    "help": "帮助",
+    "feedback": "反馈",
+    "about": "关于",
+    "terms": "条款",
+    "privacy": "隐私",
+    "service": "服务",
+    "language": "语言",
+    "language_zh": "中文",
+    "language_en": "英文",
+    "copied_to_clipboard": "已复制到剪贴板",
+    "open_camera": "点击开启摄像头"
+  },
+  "login": {
+    "login": "登录",
+    "login_continue": "登录以继续",
+    "login_google": "使用 Google 登录",
+    "login_phone_placeholder": "请输入您的手机号码",
+    "login_captcha_placeholder": "请输入您的验证码",
+    "login_get_captcha": "获取验证码",
+    "login_sending_captcha": "发送中...",
+    "login_resend_captcha": "重新发送",
+    "login_captcha_sent": "验证码已发送",
+    "send_captcha_failed": "发送验证码失败",
+    "login_verify": "验证登录",
+    "login_agreement": "登录即代表您同意 SekoTalk 的 ",
+    "login_privacy": "隐私条款",
+    "login_terms": " 和 ",
+    "login_service": "服务政策",
+    "login_fetching": "登录中...",
+    "login_success": "登录成功",
+    "login_failed": "登录失败"
+  },
+  "home": {
+    "create_new_character": "创建新角色"
+  }
+}

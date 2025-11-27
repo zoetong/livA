@@ -1,0 +1,45 @@
+{
+  "common": {
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "close": "Close",
+    "chat": "chat",
+    "settings": "Settings",
+    "logout": "Logout",
+    "profile": "Profile",
+    "help": "Help",
+    "feedback": "Feedback",
+    "about": "About",
+    "terms": "Terms",
+    "privacy": "Privacy",
+    "service": "Service",
+    "language": "Language",
+    "language_zh": "Simplified Chinese",
+    "language_en": "English",
+    "copied_to_clipboard": "Copied to clipboard",
+    "open_camera": "Click to open camera"
+  },
+  "login": {
+    "login": "Log in",
+    "login_continue": "Login to continue",
+    "login_google": "Use Google login",
+    "login_phone_placeholder": "Please enter your phone number",
+    "login_captcha_placeholder": "Please enter your verification code",
+    "login_get_captcha": "Get verification code",
+    "login_sending_captcha": "Sending...",
+    "login_resend_captcha": "Resend",
+    "login_captcha_sent": "Verification code sent",
+    "send_captcha_failed": "Send verification code failed",
+    "login_verify": "Verify login",
+    "login_agreement": "Login means you agree to SekoTalk's ",
+    "login_privacy": "Privacy policy",
+    "login_terms": " and ",
+    "login_service": "Service policy",
+    "login_fetching": "Logging in...",
+    "login_success": "Login successful",
+    "login_failed": "Login failed"
+  },
+  "home": {
+    "create_new_character": "Create a new character"
+  }
+}
