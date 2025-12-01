@@ -57,7 +57,6 @@ const CharacterCreate: React.FC<CharacterCreateProps> = ({
   onPreview,
 }) => {
   const { message } = App.useApp();
-  const [ratio, setRatio] = useState<Ratio>(Ratio.LANDSCAPE);
   const {
     imageInfo,
     setImageInfo,
@@ -65,6 +64,8 @@ const CharacterCreate: React.FC<CharacterCreateProps> = ({
     setVoiceInfo,
     createStatus,
     setCreateStatus,
+    ratio,
+    setRatio,
   } = useCharacterStore();
 
   const [inputImgUrl, setInputImgUrl] = useState<string | null>(null);
@@ -199,9 +200,33 @@ const CharacterCreate: React.FC<CharacterCreateProps> = ({
       ),
     })
   );
-  const createCharacter = () => {
-    setCreateStatus(CreateStatus.PROCESSING);
-    onPreview();
+  const createCharacter = async () => {
+    try {
+      // 如果有裁剪器与原始图片，则基于裁剪结果更新 imageInfo
+      if (cropperRef.current && inputImgUrl) {
+        const cropper = cropperRef.current.cropper;
+        const canvas = cropper.getCroppedCanvas({
+          imageSmoothingEnabled: true,
+          imageSmoothingQuality: "high",
+        });
+        const mime = imgFileRef.current?.type || "image/png";
+        const ext = mime.split("/")[1] || "png";
+        const blob: Blob | null = await new Promise((resolve) =>
+          canvas.toBlob((b) => resolve(b), mime)
+        );
+        if (blob) {
+          const file = new File([blob], `cropped-image.${ext}`, {
+            type: mime,
+          });
+          setImageInfo(file);
+          setCreateStatus(CreateStatus.SUCCESS);
+          onPreview();
+        }
+      }
+    } catch (e) {
+      // 如果导出失败，不阻塞创建流程
+      message.error(t("common.error") ?? "Error");
+    }
   };
   return (
     <Modal

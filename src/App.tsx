@@ -14,9 +14,9 @@ import useUserStore from "@/stores/userStore";
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const location = useLocation();
   const isLogined = useUserStore((s) => s.isLogined);
-  if (isLogined) {
-    return children;
-  }
+  // if (isLogined) {
+  return children;
+  // }
   return (
     <Navigate
       to="/login"

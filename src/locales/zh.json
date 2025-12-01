@@ -48,6 +48,7 @@
     "enter_voice_name": "请输入语音名称"
   },
   "character": {
-    "character_creating": "角色创建中..."
+    "character_creating": "角色创建中...",
+    "generated_success": "角色已成功生成！"
   }
 }

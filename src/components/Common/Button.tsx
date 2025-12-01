@@ -21,9 +21,9 @@ const CommonButton = React.forwardRef<HTMLButtonElement, CommonButtonProps>(
     ref
   ) => {
     const mergedStyle: React.CSSProperties = {
-      ...style,
       border: "none",
       borderRadius: `${borderRadiusPx}px`,
+      ...style,
     };
     const mergedClassName = ["seko-common-btn", className]
       .filter(Boolean)

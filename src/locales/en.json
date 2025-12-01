@@ -48,6 +48,7 @@
     "enter_voice_name": "voice name"
   },
   "character": {
-    "character_creating": "Character creating..."
+    "character_creating": "Character creating...",
+    "generated_success": "Character Generated Successfully!"
   }
 }
