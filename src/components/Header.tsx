@@ -1,7 +1,7 @@
 import IconLogoName from "@/assets/svg/IconLogoName.svg?react";
 
 import { useTranslation } from "react-i18next";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 
 import { getLanguage, saveLanguage } from "../utils/user_util";
 
@@ -11,6 +11,9 @@ import CommonButton from "./Common/Button";
 import { useLocation, useNavigate } from "react-router-dom";
 import { cn } from "@/utils/style_utils";
 import { App } from "antd";
+import useUserStore from "@/stores/userStore";
+import IconAvatar from "@/assets/svg/IconAvatar.svg?react";
+import { fetchCreditsDetail, fetchUserInfoDetail } from "@/api/userRequest";
 
 const Header = () => {
   const { message } = App.useApp();
@@ -19,6 +22,8 @@ const Header = () => {
   const location = useLocation();
   const [curLng, setCurLng] = useState<string>("zh");
   const [routerName, setRouterName] = useState<string>("home");
+  const { userInfo, isLogined, setUserStore, setCreditStore } = useUserStore();
+  const [logined, setLogined] = useState<boolean>(false);
 
   const handleLangClick = () => {
     if (curLng === "zh") {
@@ -31,7 +36,38 @@ const Header = () => {
       setCurLng("zh");
     }
   };
-
+  // 获取积分
+  const fetchCreditInfo = useCallback(async () => {
+    try {
+      const ret = await fetchCreditsDetail();
+      if (ret.code !== 200 || !ret.data) {
+        message.error(ret.msg || t("login.fetch_credits_failed"));
+        return;
+      }
+      setCreditStore(ret.data);
+    } catch (error) {
+      message.error(t("common.network_error"));
+    }
+  }, [setCreditStore, message, t]);
+  // 获取用户信息
+  const fetchUserInfo = useCallback(async () => {
+    try {
+      const ret = await fetchUserInfoDetail();
+      if (ret.code !== 200 || !ret.data) {
+        message.error(ret.msg || t("login.fetch_user_info_failed"));
+        return;
+      }
+      setUserStore(ret.data);
+    } catch (error) {
+      message.error(t("common.network_error"));
+    }
+  }, [setUserStore, message, t]);
+  // 复制当前页面链接
+  const handleShareClick = () => {
+    const url = window.location.href;
+    navigator.clipboard.writeText(url);
+    message.success(t("common.copied_to_clipboard"));
+  };
   useEffect(() => {
     setCurLng(getLanguage() || "en");
   }, [i18n.language]);
@@ -41,13 +77,16 @@ const Header = () => {
     setRouterName(pathName);
   }, [location]);
 
-  const handleShareClick = () => {
-    // 复制当前页面链接
-    const url = window.location.href;
-    navigator.clipboard.writeText(url);
-    message.success(t("common.copied_to_clipboard"));
-  };
+  useEffect(() => {
+    if (logined) {
+      fetchUserInfo();
+      fetchCreditInfo();
+    }
+  }, [logined, fetchUserInfo, fetchCreditInfo]);
 
+  useEffect(() => {
+    setLogined(isLogined);
+  }, [isLogined]);
   return (
     <div className="w-full h-full px-6 flex justify-between items-center relative bg-transparent">
       <div
@@ -82,11 +121,32 @@ const Header = () => {
         </CommonButton>
 
         {/* 头像或登录按钮 */}
-        <CommonButton className="w-7 h-7 flex items-center">
-          <span className="text-sm font-normal text-[#3B3D2C]">
-            <IconUser className="w-3.5 h-3.5" />
-          </span>
-        </CommonButton>
+        {logined ? (
+          <div className=" cursor-pointer">
+            {userInfo?.avatar_url ? (
+              <img
+                className="w-7 h-7 rounded-full object-cover"
+                src={userInfo?.avatar_url}
+                loading="lazy"
+                referrerPolicy="no-referrer"
+                alt=""
+              />
+            ) : (
+              <IconAvatar className="w-7 h-7" />
+            )}
+          </div>
+        ) : (
+          <CommonButton
+            className="w-7 h-7 flex items-center"
+            onClick={() => {
+              navigate("/login");
+            }}
+          >
+            <span className="flex items-center text-sm font-normal text-[#3B3D2C]">
+              <IconUser className="w-3.5 h-3.5" />
+            </span>
+          </CommonButton>
+        )}
       </div>
     </div>
   );

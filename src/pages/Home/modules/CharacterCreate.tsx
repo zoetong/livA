@@ -19,7 +19,7 @@ import IconModelBlack from "@/assets/svg/IconModelBlack.svg?react";
 import IconModelGray from "@/assets/svg/IconModelGray.svg?react";
 import IconArrowDownBlack from "@/assets/svg/IconArrowDownBlack.svg?react";
 import IconStar from "@/assets/svg/IconStar.svg?react";
-import Rectangle34624904 from "@/assets/images/Rectangle 34624904.png";
+
 import IconPause from "@/assets/svg/IconPause.svg?react";
 import IconPlay from "@/assets/svg/IconPlay.svg?react";
 import IconAdd from "@/assets/svg/IconAdd.svg?react";
@@ -50,7 +50,7 @@ const tabsList: RatioItem[] = [
   },
 ];
 const defaultModelName = "SekoTalk-v1.0";
-const MAX_AUDIO_DURATION = 120;
+
 const CharacterCreate: React.FC<CharacterCreateProps> = ({
   open,
   onClose,
@@ -317,12 +317,7 @@ const CharacterCreate: React.FC<CharacterCreateProps> = ({
             value={characterName}
             onChange={(e) => setCharacterName(e.target.value)}
             prefix={
-              <Avatar
-                src={Rectangle34624904}
-                size={32}
-                className="m-1"
-                shape="circle"
-              />
+              <Avatar src={""} size={32} className="m-1" shape="circle" />
             }
             className="w-full h-full rounded-xl"
           />
@@ -330,7 +325,7 @@ const CharacterCreate: React.FC<CharacterCreateProps> = ({
         <div className="w-full h-[137px] flex items-center justify-between border border-black/30 rounded-2xl p-1 hover:border-primary focus-within:border-primary">
           <div className="relative w-full h-full">
             <Avatar
-              src={Rectangle34624904}
+              src={""}
               size={32}
               className="m-1 absolute top-2 left-0 z-10"
               shape="circle"
@@ -369,12 +364,7 @@ const CharacterCreate: React.FC<CharacterCreateProps> = ({
         </div>
         {/* 语音框 */}
         <div className="w-full h-[54px] flex items-center justify-between border border-black/30 rounded-2xl p-1 bg-[#f4f4f4]">
-          <Avatar
-            src={Rectangle34624904}
-            size={40}
-            className="m-1"
-            shape="circle"
-          />
+          <Avatar src={""} size={40} className="m-1" shape="circle" />
           <div className="flex-1">
             <div className="w-full h-full flex items-center justify-between relative ml-2 group">
               <div className="w-10 h-10 bg-white rounded-full absolute top-[-2px] left-[-2px] z-10 cursor-pointer shadow-md flex items-center justify-center">

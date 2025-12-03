@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, useMemo } from "react";
+import { Skeleton } from "antd";
 import type { Character } from "@/types/Character";
 import CommonButton from "@/components/Common/Button";
 import IconArrow from "@/assets/svg/IconArrow.svg?react";
@@ -82,6 +83,34 @@ const CharacterSwiper = () => {
     });
   }, [mutedAll, characterList]);
 
+  const renderSkeleton = () => {
+    const offsets = [-3, -2, -1, 0, 1, 2, 3];
+    return (
+      <div
+        className={cn(
+          "flex-1 relative flex items-end justify-center h-full",
+          "[perspective:1200px] [transform-style:preserve-3d] pb-[100px] mx-auto translate-y-[-40px]"
+        )}
+      >
+        {offsets.map((offset, idx) => (
+          <div key={idx} className={getCardClassByOffset(offset)}>
+            <div className="w-full aspect-[2/3] overflow-hidden bg-transparent mt-0 rounded-t-[16px] relative flex-1">
+              <Skeleton.Button
+                active
+                block
+                style={{ width: "100%", height: "100%", borderRadius: 16 }}
+              />
+            </div>
+            <div className="w-full h-[120px] bg-[#ffffff] p-3 flex flex-col justify-center gap-2">
+              <Skeleton.Input active size="small" style={{ width: "60%" }} />
+              <Skeleton.Input active size="small" />
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  };
+
   // step-by-step move to target index for smooth wrap-around
   const stepTimerRef = useRef<number | null>(null);
   const stepToIndex = (targetIdx: number) => {
@@ -127,6 +156,7 @@ const CharacterSwiper = () => {
 
   return (
     <div className={cn("relative w-full h-full flex flex-col pt-[72px]")}>
+      {characterList.length === 0 && renderSkeleton()}
       {visibleList.length > 0 && currentCharacter && (
         <div
           className={cn(

@@ -99,7 +99,9 @@ const LoginForm = () => {
   const handleGLClick = () => {
     message.loading(t("login.login_fetching"));
     setLogging(true);
-    loginGoogle();
+    // loginGoogle();
+    // 模拟登录
+    verifyGLToken("string");
   };
 
   const handlePhoneLogin = async (event: React.FormEvent) => {
@@ -169,8 +171,8 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="w-full h-full flex items-center justify-left ">
-      <div className="w-full max-w-[320px] ml-10">
+    <div className="w-full h-full flex items-center justify-center">
+      <div className="w-full max-w-[320px]">
         <div className="flex flex-col gap-2 z-[20]">
           <span className="mx-auto text-3xl font-bold text-[#3B3D2C]">
             {t("login.login_welcome")}

@@ -1,5 +1,5 @@
 import type { Character } from "@/types/Character";
-import { Spin, Popover } from "antd";
+import { Skeleton, Popover } from "antd";
 import { cn } from "@/utils/style_utils";
 import { useMemo, useRef } from "react";
 
@@ -59,6 +59,8 @@ const CharacterSlider = ({
     run();
   };
 
+  const nineCount = () => 13;
+
   return (
     <div className="w-full h-full rounded-md bg-white/10 p-2 shadow-[0_4px_4px_0_rgba(0,0,0,0.25)] overflow-hidden">
       {rotated.length > 0 && currentCharacter ? (
@@ -108,8 +110,35 @@ const CharacterSlider = ({
           })}
         </div>
       ) : (
-        <div className="w-full h-full flex items-center justify-center">
-          <Spin size="small" />
+        <div className="w-full h-full flex items-center justify-center p-2">
+          <div className="w-full h-full flex flex-col items-center justify-center gap-1">
+            {Array.from({ length: nineCount() }).map((_, idx) => {
+              const center = Math.floor(nineCount() / 2);
+              const isCenter = idx === center;
+              return (
+                <div
+                  key={idx}
+                  className={cn(
+                    "w-full transition-all duration-300 overflow-hidden",
+                    isCenter
+                      ? "flex items-center justify-center"
+                      : "shadow-[0_0_13.5px_0_rgba(0,0,0,0.25)] opacity-70 h-7 rounded-[50%]"
+                  )}
+                >
+                  {isCenter ? (
+                    <Skeleton.Avatar active size={50} shape="circle" />
+                  ) : (
+                    <Skeleton.Button
+                      active
+                      block
+                      shape="round"
+                      style={{ height: 28 }}
+                    />
+                  )}
+                </div>
+              );
+            })}
+          </div>
         </div>
       )}
     </div>

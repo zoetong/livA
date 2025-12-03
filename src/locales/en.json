@@ -17,7 +17,8 @@
     "language_zh": "Simplified Chinese",
     "language_en": "English",
     "copied_to_clipboard": "Copied to clipboard",
-    "open_camera": "Click to open camera"
+    "open_camera": "Click to open camera",
+    "network_error": "Network error"
   },
   "login": {
     "login": "Log in",
@@ -38,7 +39,9 @@
     "login_fetching": "Logging in...",
     "login_success": "Login successful",
     "login_failed": "Login failed",
-    "login_welcome": "Welcome to login"
+    "login_welcome": "Welcome to login",
+    "fetch_user_info_failed": "Failed to get user information",
+    "fetch_credits_failed": "Failed to get credits"
   },
   "home": {
     "create_new_character": "Create a new character",

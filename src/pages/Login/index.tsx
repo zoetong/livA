@@ -57,9 +57,9 @@ const LoginPage = () => {
   }, []);
 
   return (
-    <div className="relative w-full min-h-screen flex login-container animate-bg-position animate-bg">
+    <div className="relative w-full min-h-screen flex login-container animate-bg-position animate-bg max-w-[1680px] mx-auto">
       {/* Left: login area with bg layers */}
-      <section className="relative w-[648px] z-20 h-screen flex items-center justify-center px-10 bg-transparent">
+      <section className="relative w-[648px] z-20 h-screen flex items-center justify-center px-10 bg-transparent ">
         <LoginForm />
       </section>
 
@@ -68,7 +68,7 @@ const LoginPage = () => {
         <div
           className="relative flex justify-center items-start z-10"
           style={{
-            transform: "translateX(-550px) translateY(-200px) rotate(15deg)",
+            transform: "translateX(-500px) translateY(-200px) rotate(15deg)",
           }}
         >
           <div className="flex gap-6 w-full justify-center ">

@@ -34,3 +34,36 @@ export interface LipSyncModelInfo {
   label_zh: string;
   motion_style: LipSyncMotionStyle;
 }
+
+export interface CharacterSettings {
+  id: string;
+  name: string;
+  author: string;
+  voice: string;
+  prompt: string;
+  image_url: string;
+  model: string;
+  number_of_likes: number;
+}
+
+export interface EditCharacterRequest {
+  character_id: string;
+  name: string;
+
+  prompt: string;
+  voice_id: string;
+  image_id: string;
+  model_id: string;
+}
+
+export interface VoiceOption {
+  id: string;
+  name_zh: string;
+  name_en: string;
+}
+
+export interface ModelOption {
+  id: string;
+  name_zh: string;
+  name_en: string;
+}

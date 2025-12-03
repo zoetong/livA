@@ -30,29 +30,30 @@ export const verifyCaptcha = async (
   return response.data;
 };
 
-// 用户登录（/login）
+// 用户登录（/sign_in）
 export const reqLogin = async (
   accessToken: string,
   loginType: string
 ): Promise<ApiResponse<TokenInfo>> => {
-  const response = await request.post<ApiResponse<TokenInfo>>("/login", {
+  const response = await request.post<ApiResponse<TokenInfo>>("/sign_in", {
     access_token: accessToken,
     login_type: loginType,
   });
   return response.data;
 };
 
-// 用户登出（'/logout'）
+// 用户登出（'/sign_out'）
 export const logout = async (): Promise<ApiResponse<null>> => {
-  const response = await request.post<ApiResponse<null>>("/logout");
+  const response = await request.post<ApiResponse<null>>("/sign_out");
   return response.data;
 };
 
-// 用户积分详情（/user/credits）
+// 用户积分详情（/get_user_credits）
 export const fetchCreditsDetail = async (): Promise<
   ApiResponse<CreditInfo>
 > => {
-  const response = await request.get<ApiResponse<CreditInfo>>("/user/credits");
+  const response =
+    await request.get<ApiResponse<CreditInfo>>("/get_user_credits");
   return response.data;
 };
 

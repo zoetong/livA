@@ -17,19 +17,19 @@ export const mainRoutes: AppRoute[] = [
   {
     path: "/",
     element: HomePage,
-    name: "sidebar_home",
+    name: "home",
     requiresAuth: true,
   },
   {
     path: "/login",
     element: LoginPage,
-    name: "sidebar_assets",
+    name: "login",
     requiresAuth: false,
   },
   {
     path: "/live",
     element: LivePage,
-    name: "sidebar_profile",
+    name: "live",
     requiresAuth: true,
   },
 ];

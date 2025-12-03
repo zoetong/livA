@@ -10,3 +10,9 @@ export interface PaginatedResponse<T> {
   msg: string;
   data: T[];
 }
+export interface FileInfo {
+  id: string;
+  type: string;
+  url: string;
+  path: string;
+}

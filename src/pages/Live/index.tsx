@@ -2,7 +2,6 @@ import { useSearchParams } from "react-router-dom";
 import { useEffect, useState, useCallback, useRef } from "react";
 import type { Character } from "@/types/Character";
 
-import img_34624891 from "@/assets/images/Rectangle 34624891.png";
 import { CallingStatus, Ratio } from "@/types/Live";
 import { getWindowSize, getUserWindowSize } from "@/utils/live_util";
 import CommonButton from "@/components/Common/Button";
@@ -66,7 +65,7 @@ const LivePage = () => {
       // character example:
 
       setCharacter(character);
-      setBgImg(img_34624891);
+      // setBgImg( character.image_url );
       setIsLoading(false);
       setCallingStatus(CallingStatus.PENDING);
     }
@@ -157,7 +156,7 @@ const LivePage = () => {
             {/* 内容 */}
             <div className="relative z-10 w-full h-full flex flex-col items-center justify-center gap-3">
               <img
-                src={img_34624891}
+                src={""}
                 alt=""
                 className="w-[150px] aspect-square object-cover rounded-2xl"
               />

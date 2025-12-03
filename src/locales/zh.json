@@ -17,7 +17,8 @@
     "language_zh": "中文",
     "language_en": "英文",
     "copied_to_clipboard": "已复制到剪贴板",
-    "open_camera": "点击开启摄像头"
+    "open_camera": "点击开启摄像头",
+    "network_error": "网络错误"
   },
   "login": {
     "login": "登录",
@@ -38,7 +39,9 @@
     "login_fetching": "登录中...",
     "login_success": "登录成功",
     "login_failed": "登录失败",
-    "login_welcome": "欢迎登录"
+    "login_welcome": "欢迎登录",
+    "fetch_user_info_failed": "获取用户信息失败",
+    "fetch_credits_failed": "获取积分失败"
   },
   "home": {
     "create_new_character": "创建新角色",
